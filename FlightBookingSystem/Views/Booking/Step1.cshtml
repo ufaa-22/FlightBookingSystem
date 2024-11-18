@@ -1,0 +1,45 @@
+﻿@model FlightBookingSystem.DTOs.FlightSearchDto
+
+@{
+    ViewData["Title"] = "Step 1: Flight Search";
+}
+
+<h2 class="text-center">Search for Flights</h2>
+
+<form asp-action="Step1" method="post" class="mt-4">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="FromAirport"></label>
+            <input asp-for="FromAirport" class="form-control" placeholder="From Airport" />
+            <span asp-validation-for="FromAirport" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="ToAirport"></label>
+            <input asp-for="ToAirport" class="form-control" placeholder="To Airport" />
+            <span asp-validation-for="ToAirport" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="FlightDate" class="col-form-label"></label>
+            <input asp-for="FlightDate" type="date" class="form-control" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+            <span asp-validation-for="FlightDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label asp-for="NumberOfPassengers"></label>
+            <input type="number" asp-for="NumberOfPassengers" class="form-control" min="1" />
+            <span asp-validation-for="NumberOfPassengers" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="SeatClass"></label>
+            <select asp-for="SeatClass" class="form-control">
+                <option value="Economy">Economy</option>
+                <option value="Business">Business</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Search Flights</button>
+</form>
+
+<a asp-action="Step1" class="btn btn-secondary mt-3">Back</a>
